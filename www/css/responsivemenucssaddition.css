@@ -1,0 +1,222 @@
+p
+{
+padding-right: 4px;
+padding-left: 4px;
+
+}
+h1
+{
+font-family: “Lucida Sans Unicode”;
+font-size: 18pt;
+color: #474747 ;
+font-weight: regular;
+
+}
+h2
+{
+ffont-family: “Lucida Sans Unicode”;
+font-size: 14pt;
+color: #474747 ;
+font-weight: regular;
+
+}
+h3
+{
+font-family: “Lucida Sans Unicode”;
+font-size: 12pt;
+color: #474747 ;
+font-weight: bold;
+
+}
+li
+{
+font-family: “Lucida Sans Unicode”;
+font-size: 11pt;
+font-style: normal;
+line-height: normal;
+padding: 0px;
+margin-bottom:10px;
+color: #666666 ;
+
+}
+.itemimage
+{
+border:solid 0px #aaa;
+max-width:100px;
+width: expression(this.width > 100 ? 100: true);
+vertical-align:middle;
+
+}
+.iimage
+{
+border:solid 0px #aaa;
+max-width:320px;
+width: expression(this.width > 320 ? 320: true);
+vertical-align:middle;
+
+}
+/*iconmenucssaddition2*/.iconmenulistcontainer
+{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+}
+.iconmenucontainer
+{
+  border-bottom:solid 1px #c8c8c8 ;
+  background:white;
+  margin: 0;
+
+}
+.iconmenuitemlink
+{
+  display:block;
+  font-size: 16px;
+  font-family: sans-serif;
+   font-weight: 100;
+  color:#000;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+
+}
+.iconmenuimgcontainer
+{
+  float:left;
+  max-width:30px;
+   padding: 10px 5px 10px 7px;
+
+}
+ .iconmenuitemimage
+{
+  vertical-align: middle;
+  padding: 0;
+  height: 23px;
+  width: 23px;
+  border:0;
+
+}
+.iconmenuimgarrowcontainer
+{
+  float:right;
+   padding: 14px 10px 13px;
+   vertical-align: middle;
+
+}
+.iconmenuimgarrow
+{
+  border: none;
+  max-width: 100%;
+  vertical-align: middle;
+  width: 10px;
+
+}
+.iconmenutitle
+{
+  font-size:16px;
+  font-family: sans-serif;
+  font-weight: 100;
+  color:#000;
+  float:left;
+  padding: 14px 5px 13px;
+  margin: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+color:#666666 ;
+font-size:14pt;
+
+}
+/*contactbuttonmenucssaddition2*/body 
+{
+    background: #dddddd ;
+    font-size: 14px;
+    font-weight: 200;
+    line-height: 1.5;
+    width: 100%;
+    -webkit-text-size-adjust: none;
+    position: relative;
+    margin: 0 auto;
+
+}
+body > .responsivemenulistcontainer
+{
+box-sizing: border-box;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+padding:0px;
+width: 100%;
+margin: 0 auto;
+-webkit-tap-highlight-color:rgba(0,0,0,0.1);
+
+}
+.responsiveMenuList
+{
+     text-align: center;
+    list-style: none;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+
+}
+.responsiveMenuItem
+{
+        background: #fff;
+    box-sizing: border-box;
+    margin: 0px;
+    border: solid 1px #ddd;
+    width: 50%;
+    float: left;
+
+}
+.responsiveMenuTitle 
+{
+text-decoration: none;
+  width:100%;
+  height:100%;
+  display:block;
+
+}
+
+.responsiveMenuImage
+{
+  max-height: 16vw;
+  min-height: 16vw;
+  max-width: 16vw;
+  min-width: 16vw;
+  padding: 25% 0 10%;
+  margin: auto;
+  width: unset;
+  height: unset;
+
+}
+.responsiveMenuTitle > span
+{
+  color: #474747 ;
+  font-family: “Open Sans”;
+  overflow: hidden;
+  display: block;
+  word-wrap: break-word;
+  height: 27pt;
+  margin: 3% auto;
+  padding: 0px 10px;
+  font-size: 100%;
+  max-height: 27pt;
+
+}
+

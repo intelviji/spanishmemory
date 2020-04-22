@@ -1,0 +1,441 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html>
+<head>
+  <title>Find Missing Letter </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	 <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"> 
+	 <link rel="stylesheet" href="../css/jquery-ui.min.css">
+<style type="text/css">
+
+.eggnew {
+    width: 60px;
+    height: 94px;
+    background: #fff;
+    display: block;
+    -webkit-border-radius: 63px 63px 63px 63px / 108px 108px 72px 72px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+	border:5px solid black;
+}	
+#content{
+margin-top:1%;
+}
+.alphanew{
+position:absolute;
+left:52%;
+top:30%;
+font-size:38px;
+-webkit-text-stroke:2px green;
+
+font-weight:bold;
+}
+#options
+{
+position:absolute;
+margin-top:20%;
+width:100%;
+
+}
+.optalpha{
+width:100%;
+}
+.mybalun{
+width:100%;
+
+}
+.alpha{
+width:100%;
+}
+.balloon{
+
+}
+</style>
+
+</head>
+<body style="background:url(../img/back1.png); background-repeat:no-repeat;background-size:cover;background-color:#9bc22f;">
+
+<audio id="clap" type="audio/ogg" src="../img/applause-short.mp3"></audio>
+<audio id="try" type="audio/ogg" src="../img/try.mp3"></audio>
+<audio src="../img/bell.mp3" id="dropsound"></audio>
+<audio  autoplay id="buddy">
+<source src="../img/buddy.mp3">
+</audio>
+<audio  id="result"></audio>
+
+<div  id="content">
+<div class="container-fluid">
+	<div class="row">
+		
+		<div class="col-xs-3 col-md-3 col-sm-3 balu">
+			<div class="balloon">
+				<img src="../img/bal_red.png" class=" mybalun" /> <br />
+				<img src="" class="alpha" />
+			</div>
+		</div>
+		
+		<div class="col-xs-3 col-md-3 col-sm-3 balu">
+			<div class="balloon">
+				<img src="../img/bal_green.png" class=" mybalun" /><br />
+				<img src="" class="alpha" />
+			</div>
+		</div>
+	
+		<div class="col-xs-3 col-md-3 col-sm-3 balu">
+			 <div class="balloon" >
+				<img src="../img/bal_blue.png" class=" mybalun" /><br />
+				<img src="" class="alpha"  />
+			</div>
+		</div>
+		
+		<div class="col-xs-3 col-md-3 col-sm-3 balu">
+			 <div class="balloon">
+				<img src="../img/bal_yellow.png" class=" mybalun" /> <br />
+				<img src="" class="alpha" />
+			</div>
+		</div>
+	</div>
+</div> 
+
+
+
+</div>
+
+
+<div  id="options" >
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3 col-md-3 sm-3">
+			<div class="dragalpha" ><img src="" class="optalpha"   /> </div>
+		</div>
+		<div class="col-xs-3 col-md-3 sm-3">
+			<div class="dragalpha" ><img src="" class="optalpha"  /> </div>
+		</div>
+		<div class="col-xs-3 col-md-3 sm-3">
+			<div class="dragalpha"> <img src="" class="optalpha"  /> </div>
+		</div>
+		<div class="col-xs-3 col-md-3 sm-3">
+			<div class="dragalpha" ><img src="" class="optalpha"  /> </div>
+		</div>
+	</div>
+</div>
+</div>
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery-ui.min.js"></script>
+<!-- <script src="../js/drag.js"></script> -->
+ <script src="../js/jquery.ui.touch-punch.min.js"></script> 
+
+<script>
+var defaultOptions = {
+      colors : ['#2DE7F0', '#FA5C46'],
+      num_sprites: 22,
+      lifespan: 1000,
+      radius: 300,
+      sprite_size: 10,
+      shape: 'circle',
+      gravity: 'false',
+    }
+var opts = $.extend({}, defaultOptions, opts);
+ var $target = this,
+    num_sprites = opts.num_sprites,
+    colors = opts.colors,
+    allSprites = [],
+    radius = opts.radius,
+    sprite_size = opts.sprite_size,
+    shape = opts.shape.toLowerCase(),
+    gravity = opts.gravity,
+    image = opts.image,
+    lifespan = opts.lifespan,
+    fadetoOpacity = 100;
+function makeSprites(centerX, centerY)
+{
+    for (var i=0; i < num_sprites; i++)
+	{
+      //make a div
+      var newsprite = document.createElement('div');
+      var rotateDeg = Math.random()*360
+
+      if (gravity == "true" || gravity == true){
+        var radSpread = Math.random() * (radius*2 - radius/4) + radius/4
+
+      } else {
+        var radSpread = Math.random() * (radius + radius) -radius
+      }
+
+      if (image){
+
+        $(newsprite).css({
+          "background-size":"contain",
+          backgroundImage: "url("+image+")"
+        });
+
+      };
+
+      //give the div css, based on client's parameters
+      if (shape == 'circle'){
+
+      $(newsprite).css({
+          backgroundColor: colors[i % colors.length],
+          left: centerX,
+          top: centerY,
+          width: sprite_size,
+          height: sprite_size,
+          borderRadius: "100%",
+          position: "absolute"
+
+        });
+
+      } else if (shape == 'square'){
+        $(newsprite).css({
+            backgroundColor: colors[i % colors.length],
+            left: centerX,
+            top: centerY,
+            width: sprite_size,
+            height: sprite_size,
+            borderRadius: "0px",
+            position: "absolute"
+          });
+
+      } else if (shape == "triangle"){
+        fadetoOpacity = 0;
+
+        $(newsprite).css({
+            width: '0px',
+            height: '0px',
+            "border-top": sprite_size + "px solid transparent",
+            "border-right": sprite_size+ "px solid transparent",
+
+            "border-top":sprite_size +"px solid "+ colors[i % colors.length],
+
+            left: centerX,
+            top: centerY,
+
+            position: "absolute",
+            "-webkit-transform": "rotate("+rotateDeg+"deg)",
+            "-moz-transform": "rotate("+rotateDeg+"deg)",
+            "-o-transform": "rotate("+rotateDeg+"deg)",
+            "-ms-transform": "rotate("+rotateDeg+"deg)",
+            "transform": "rotate("+rotateDeg+"deg)"
+          });
+
+      } else 
+		{
+			if (i==0)
+			{
+
+          console.log("the shape chosen on this object is invalid. Try 'circle', 'triangle', or 'square'")
+
+			}
+		}
+        $(newsprite).animate({
+          opacity: [ fadetoOpacity, "swing" ],
+          left : centerX + Math.random() * (radius + radius) -radius,
+          top : centerY + radSpread,
+          width: [0,"easeInQuart"],
+          height: [0,"easeInQuart"]
+        }, lifespan, 'easeOutQuad' ,function() {
+
+          document.body.removeChild(this)
+
+
+        });
+
+      document.body.appendChild(newsprite);
+
+    }
+}
+var resarr = ['fantastic.mp3','awesome.mp3','good.mp3'];
+var quiz = [{ q1 : "sa.jpg",q2: "sb.jpg",q3:"qmark3.png",q4: "sd.jpg",option1 : "sc.jpg", option2: "se.jpg", option3 : "sf.jpg", option4 : "sg.jpg", answer : "sc.jpg"},
+{ q1 : "so.jpg",q2: "sp.jpg",q3:"sq.jpg",q4: "qmark3.png",option1 : "ss.jpg", option2: "sr.jpg", option3 : "sa.jpg", option4 : "sz.jpg", answer : "sr.jpg"},
+{ q1 : "sj.jpg",q2: "sk.jpg",q3:"qmark3.png",q4: "sm.jpg",option1 : "sn.jpg", option2: "so.jpg", option3 : "sl.jpg", option4 : "sb.jpg", answer : "sl.jpg"},
+{ q1 : "sw.jpg",q2: "qmark3.png",q3:"sy.jpg",q4: "sz.jpg",option1 : "sx.jpg", option2: "sq.jpg", option3 : "sr.jpg", option4 : "se.jpg", answer : "sx.jpg"},
+{ q1 : "qmark3.png",q2: "sh.jpg",q3:"si.jpg",q4: "sj.jpg",option1 : "sk.jpg", option2: "sl.jpg", option3 : "sa.jpg", option4 : "sg.jpg", answer : "sg.jpg"},
+{ q1 : "sn.jpg",q2: "so.jpg",q3:"qmark3.png",q4: "sq.jpg",option1 : "sr.jpg", option2: "ss.jpg", option3 : "sp.jpg", option4 : "sw.jpg", answer : "sp.jpg"},
+{ q1 : "sv.jpg",q2: "qmark3.png",q3:"sx.jpg",q4: "sy.jpg",option1 : "sz.jpg", option2: "sa.jpg", option3 : "sd.jpg", option4 : "sw.jpg", answer : "sw.jpg"},
+{ q1 : "sc.jpg",q2: "sd.jpg",q3:"se.jpg",q4: "qmark3.png",option1 : "sf.jpg", option2: "sj.jpg", option3 : "sy.jpg", option4 : "su.jpg", answer : "sf.jpg"},
+{ q1 : "sk.jpg",q2: "qmark3.png",q3:"sm.jpg",q4: "sn.jpg",option1 : "so.jpg", option2: "sl.jpg", option3 : "su.jpg", option4 : "sq.jpg", answer : "sl.jpg"},
+{ q1 : "st.jpg",q2: "qmark3.png",q3:"sv.jpg",q4: "sw.jpg",option1 : "su.jpg", option2: "se.jpg", option3 : "sr.jpg", option4 : "sa.jpg", answer : "su.jpg"},
+{ q1 : "se.jpg",q2: "sf.jpg",q3:"sg.jpg",q4: "qmark3.png",option1 : "si.jpg", option2: "sy.jpg", option3 : "sk.jpg", option4 : "sh.jpg", answer : "sh.jpg"}
+];
+var balarr = ['bal_red.png','bal_blue.png','bal_green.png','bal_skyblue.png','bal_yellow.png'];
+var times=0;
+var timednum = 0;
+var loop_index=0;
+//$(".balu").effect("bounce", {times: 6},6000);
+Array.prototype.randam = function () {
+  return this[Math.floor((Math.random()*this.length))];
+}
+ $.fn.dropsound = function() {
+$("#dropsound").get(0).play();
+}
+function createQuestion()
+{
+$(".balu").effect("bounce", {times: 5},2000);
+$(".optalpha").each(function(index,element){
+$(".optalpha").attr("src","");
+});
+
+		$(".balloon").each(function(index,element){
+			//$(this).removeClass("droppable");
+			//$(this).removeClass("ui-droppable");
+			var val;
+			var j = index + 1;
+			$(this).remove
+			switch(j)
+			{case 1:
+					val =  quiz[loop_index].q1;
+					break;
+				case 2:
+					val = quiz[loop_index].q2;
+					break;
+				case 3: 
+					val = quiz[loop_index].q3;
+					break;
+				case 4:
+					val = quiz[loop_index].q4;
+					break;
+			}
+		
+			//$(this).attr("src", "../img/" + val );
+			$(this).html('<img src="../img/' + balarr.randam() + '" class="mybalun" /><br />');
+			
+			if(val == "qmark3.png")
+			{
+				$(this).append('<img src="../img/'+val+'" class="alpha"  id="droppable1"  />');
+					//myDroppable();
+			}
+			else
+			{
+				$(this).append('<img src="../img/'+val+'" class="alpha" />');
+			}
+		});
+		$(".dragalpha:eq(0)").html('<img class="optalpha" src="../img/'+quiz[loop_index].option1+'" data-optalpha="'+quiz[loop_index].option1+'" >');
+		$(".dragalpha:eq(1)").html('<img class="optalpha" src="../img/'+quiz[loop_index].option2+'" data-optalpha="'+quiz[loop_index].option2+'" >');
+		$(".dragalpha:eq(2)").html('<img class="optalpha" src="../img/'+quiz[loop_index].option3+'" data-optalpha="'+quiz[loop_index].option3+'" >');
+		$(".dragalpha:eq(3)").html('<img class="optalpha" src="../img/'+quiz[loop_index].option4+'" data-optalpha="'+quiz[loop_index].option4+'" >');
+		$(".optalpha").draggable({revert: "invalid"});
+		$("#droppable1").droppable( 
+		{		
+		accept: ".optalpha", 
+		drop: function( event, ui ) 
+		{
+			var item  = ui.draggable;
+			var alpha = $(item).data("optalpha");
+			var centerX = $(this).width()/2 + $(this).offset().left;
+			var centerY = $(this).offset().top+ $(this).height()/2;
+			var ans = quiz[loop_index].answer;
+			$.fn.dropsound();
+			makeSprites(centerX, centerY);
+			if(alpha == ans)
+			{
+			//console.log("correct");
+			$("#clap").get(0).src="../img/" + resarr.randam();
+			$("#clap").get(0).play();
+			loop_index++;
+			//$(this).droppable("disable");
+			setTimeout(function() {
+			//$(this).html(ui.draggable.remove().html());
+			//$(ui.draggable).draggable("destroy");
+			//$(this).droppable("destroy");
+			if(loop_index > 10)
+			{
+				$.fn.displayOverlay('<a href="../index.html"><img src="../img/star.png" style="width:100%;" /></a>');
+			}
+			else
+			createQuestion();
+			}, 1000);
+			
+			
+				
+				
+			}
+			else
+			{
+				$("#try").get(0).play();
+				$(ui.draggable).hide();
+			}
+		}
+	});
+}
+$(document).ready(function(){
+//$("#bg").get(0).play();
+$.fn.displayOverlay = function (text) {
+$("#buddy").get(0).play();
+
+    $("<table id='overlay'><tbody><tr><td>" + text + "</td></tr></tbody></table>").css({
+        "position": "fixed",
+        "top": 0,
+        "left": 0,
+        "width": "100%",
+        "height": "100%",
+        "background-color": "rgba(0,0,0,0.8)",
+        "z-index": 10000,
+        "vertical-align": "middle",
+        "text-align": "center",
+        "color": "#fff",
+        "font-size": "30px",
+        "font-weight": "bold",
+        "cursor": "hand"
+    }).appendTo("body");
+}
+//console.log(loop_index);
+
+createQuestion();
+$("#droppable1").droppable( 
+		{
+		
+		accept: ".optalpha", 
+		drop: function( event, ui ) 
+		{
+			var item  = ui.draggable;
+			var alpha = $(item).data("optalpha");
+			var centerX = $(this).width()/2 + $(this).offset().left;
+			var centerY = $(this).offset().top+ $(this).height()/2;
+			var ans = quiz[loop_index].answer;
+			$.fn.dropsound();
+			makeSprites(centerX, centerY);
+			if(alpha == ans)
+			{
+			$("#clap").get(0).src="../img/" + resarr.randam();
+			$("#clap").get(0).play();
+			loop_index++;
+			//$(this).droppable("disable");
+			setTimeout(function() {
+				$(this).html(ui.draggable.remove().html());
+			//$(ui.draggable).draggable("destroy");
+			//$(this).droppable("destroy");
+			if(loop_index > 10)
+			{
+			$.fn.displayOverlay('<a href="../index.html"><img src="../img/star.png" style="width:100%;" /></a>');
+			}
+			else	
+			createQuestion();
+			}, 1000);
+			
+				//speak(msgs.randam());
+				//
+				//$("#clap").get(0).play();
+				//$.fn.displayOverlay('<a href="abc_colors.html" style="float:left;"><img src="../img/back_icon.png" width="75" height="75" /></a><a id="next6"><img src="../img/next.png" width="75" height="75" /></a>');
+				
+				
+			}
+			else
+			{
+				$("#try").get(0).play();
+				$(ui.draggable).hide();
+			}
+		}
+	});
+
+	$(".optalpha").draggable({revert: "invalid"});
+
+	
+});
+
+</script>
+<script type="text/javascript" src="../cordova.js"></script>
+<script type="text/javascript" src="../js/admob_simple.js"></script>
+</body>
+</html>

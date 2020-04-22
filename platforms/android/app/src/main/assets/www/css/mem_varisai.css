@@ -1,0 +1,78 @@
+body{background-color:lightpink;
+background-image:url();
+}
+a{cursor:hand;
+}
+.ui-dialog-titlebar-close{display:none;
+}
+.options a{float:left;
+padding-right:10px;
+}
+.options a:last-child{float:right;
+}
+.options a:nth-last-child(2){margin-left:50px;
+}
+.options a img{background-color:#ffa827;
+width:45px;
+height:60px;
+}
+.ui-dialog,.ui-dialog-content{padding:0px;
+}
+ui.widget.ui-widget-content,.ui-widget-content{border:none;
+}
+div#memory_board{background-color:lightpink;
+width:100%;
+/*height:540px;
+*/padding-left:10px;
+padding-right:5px;
+margin:0px 0px;
+padding-top:20px;
+}
+div.col-xs-2{//border:#000 1px solid;
+padding:0;
+margin:0;
+text-align:center;
+}
+div.col-xs-4{//border:#000 1px solid;
+padding:1px;
+margin:0;
+text-align:center;
+}
+.row{
+	margin-top:0px;
+
+}
+#gamearea,
+#levels
+{
+	margin-top:15%;
+}
+.tile_div{background: url(../img/qmark2.png) no-repeat;
+/*background-color:#fff;
+border:5px solid #88288a;
+*/color:#88288a;
+font-size:40px;
+font-weight:bolder;
+font-family:Georgia;
+position:relative;
+display:block;
+margin:3px;
+}
+img{display:block;
+}
+.col-xs-12{text-align:center;
+padding-right:10px;
+}
+a:visited{}
+#goback{cursor:hand;
+padding:10px;
+background-color:purple;
+color:#fff;
+font-size:20px;
+font-weight:bold;
+}
+.options{background-color:#ffa827;
+text-align:center;
+padding:10px;
+min-height:100px;
+}

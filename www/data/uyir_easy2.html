@@ -1,0 +1,419 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html>
+<head>
+  <title>Memory Game - Vowels</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="../css/jquery-ui.min.css">
+<link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+
+<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+
+<style>body{background-color:lightpink;
+background-image:url();
+}
+
+div#memory_board{background-color:lightpink;
+width:100%;
+/*height:540px;
+*/padding-left:10px;
+padding-right:5px;
+margin:0px 0px;
+padding-top:2px;
+}
+div.col-xs-2{//border:#000 1px solid;
+padding:0;
+margin:0;
+text-align:center;
+}
+div.col-xs-4{//border:#000 1px solid;
+padding:1px;
+margin:0;
+text-align:center;
+}
+.row{margin:1px;
+background-color:lightpink;
+}
+.tile_div{background: url(../img/qmark3.png) no-repeat;
+/*background-color:#fff;
+border:5px solid #88288a;
+*/color:#88288a;
+font-size:40px;
+font-weight:bolder;
+font-family:Georgia;
+position:relative;
+display:block;
+
+}
+img{display:block;
+}
+.col-xs-12{text-align:center;
+padding-right:10px;
+}
+a:visited{}
+#goback{cursor:hand;
+padding:10px;
+background-color:purple;
+color:#fff;
+font-size:20px;
+font-weight:bold;
+}
+
+</style>
+
+
+</head>
+<body>
+<div id="levels" style="">
+	<div class="container">
+		
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<a class="btn right" data-stage="1">
+					<span class="left title">Level 1</span>
+					<span class="right icon icon-heart"><span class="arrow-right"></span></span>
+				</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<a class="btn right" data-stage="2">
+					<span class="left title">Level 2</span>
+					<span class="right icon icon-heart"><span class="arrow-right"></span></span>
+				</a>
+			</div>
+		</div><!-- end of trow -->
+
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<a class="btn right" data-stage="3">
+					<span class="left title">Level 3</span>
+					<span class="right icon icon-heart"><span class="arrow-right"></span></span>
+				</a>
+			</div>
+		</div> <!-- end of row 3 -->
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<a class="btn right" data-stage="4">
+					<span class="left title">Level 4</span>
+					<span class="right icon icon-heart"><span class="arrow-right"></span></span>
+				</a>
+			</div>
+		</div><!-- end of row 4 -->
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<a class="btn right" data-stage="5">
+					<span class="left title">Level 5</span>
+					<span class="right icon icon-heart"><span class="arrow-right"></span></span>
+				</a>
+			</div>
+		</div> <!-- end of row 5---->
+
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<a class="btn right" data-stage="6">
+					<span class="left title">Level 6</span>
+					<span class="right icon icon-heart"><span class="arrow-right"></span></span>
+				</a>
+			</div>
+		</div> <!-- end of row 6 ---->
+
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<a class="btn right" data-stage="7">
+					<span class="left title">Level 7</span>
+					<span class="right icon icon-heart"><span class="arrow-right"></span></span>
+				</a>
+			</div>
+		</div> <!-- end of row 7 ---->
+
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<a class="btn right" data-stage="8">
+					<span class="left title">Level 8</span>
+					<span class="right icon icon-heart"><span class="arrow-right"></span></span>
+				</a>
+			</div>
+		</div> <!-- end of row 8 ---->
+
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<a class="btn right" data-stage="9">
+					<span class="left title">Level 9</span>
+					<span class="right icon icon-heart"><span class="arrow-right"></span></span>
+				</a>
+			</div>
+		</div> <!-- end of row 9 ---->
+
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<a class="btn right" data-stage="10">
+					<span class="left title">Level 10</span>
+					<span class="right icon icon-heart"><span class="arrow-right"></span></span>
+				</a>
+			</div>
+		</div> <!-- end of row 10 ---->
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<a class="btn right" data-stage="1">
+					<a href="../index.html" style="background-color:black;color:white;font-size:24px;padding:10px;font-weight:bolder;">Go Back</a>
+					
+				</a>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+<audio src="../img/levelover.mp3" id="levelup" type="audio/ogg"></audio>
+<div id="gamearea" style="background-color: lightpink; display: none;">
+	<audio id="myvoice" type="audio/ogg" src=""></audio>
+	<a id="goback">Go Back</a>
+	<div class="container-fluid">
+
+		<div id="memory_board">
+
+		</div>
+
+	</div> <!-- end of container -->
+</div>
+
+<!-- end of dialog -->
+<div id="openPop" style="display:none;position:absolute;">
+		 <div class="game-poup-area">
+			<div class="game-poup-start">
+				<div class="rib-area">
+					<h1><span>Level Completed</span></h1>
+				</div>
+				<div class="start-img">
+					<img src="../img/i.png"/>
+				</div>
+				<div class="con-text">
+					<p>CONGRATULATIONS </p>
+				</div>
+				<div class="replay">
+					<button id="replay">
+						<img src="../img/rr.png"/>
+					</button>
+					<button id="nextnew">
+						<img src="../img/next.png"/>
+					</button>
+					
+					<button id="levelsicon">
+						<img src="../img/l.png"/>
+					</button>
+				</div>
+			</div>
+		 </div>
+	</div>
+
+	<script type="text/javascript" src="../cordova.js"></script>
+	<script type="text/javascript" src="../js/admob_simple.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery-ui.min.js"></script>
+		
+		<script>
+$(document).ready(function() {
+
+var memory_array;
+var memory_values = [];
+var memory_tile_ids = [];
+var tiles_flipped = 0;
+var stage = 1;
+
+$("#gamearea").hide();
+$("#levels").show("slow");
+$("#levels a").click(function(){
+
+stage = $(this).data("stage");
+$("#levels").hide("slow");
+	$.fn.newBoard(stage);
+$("#gamearea").slideDown("slow");
+
+
+
+});
+Array.prototype.memory_tile_shuffle = function(){
+    var i = this.length, j, temp;
+    while(--i > 0){
+        j = Math.floor(Math.random() * (i+1));
+        temp = this[j];
+        this[j] = this[i];
+        this[i] = temp;
+    }
+}
+$.fn.newBoard = function(stage){
+	tiles_flipped = 0;
+	var output = '';
+var jcount = 3;
+prepareAds();
+if(stage == 1 || stage == 2)
+ memory_array = ['sm','sm','sn','sn','so','so','sp','sp','sq','sq','sr','sr'];
+else if(stage == 3 || stage == 4)
+ memory_array = ['ss','ss','st','st','su','su','sv','sv','sw','sw','sx','sx'];
+else if(stage==5)
+{
+ memory_array = ['sy','sy','sz','sz','sm','sm','sn','sn','so','so','sp','sp'];
+}
+else if(stage==6 || stage == 7 || stage == 8)
+{
+jcount = 4;
+ memory_array = ['sm','sm','sn','sn','so','so','sp','sp','sq','sq','sr','sr','ss','ss','st','st','su','su','sv','sv','sw','sw','sx','sx'];
+}
+
+else if(stage==9 || stage == 10 )
+{
+jcount = 6;
+ memory_array = ['sz','sz','sn','sn','so','so','sp','sp','sq','sq','sr','sr','ss','ss','st','st','su','su','sv','sv','sw','sw','sy','sy'];
+}
+else
+ memory_array = ['sy','sy','sn','sn','so','so','sp','sp','sq','sq','sr','sr'];
+    memory_array.memory_tile_shuffle();
+
+var icount = memory_array.length;
+	for(var i = 0; i < icount; i++){
+		output += '<div class="row">';
+		for (var j=0; j < jcount;j++,i++)
+		{
+if(jcount==4)
+{
+	output += '<div class="col-xs-3 col-md-3"><div data-val="' + memory_array[i] + '" class="tile_div" id="tile_'+i+'" ><img src="../img/qmark3.png" data-val="?" align="center"  class="img-responsive"  /></div></div>';
+}
+else if(jcount == 6)
+{
+output += '<div class="col-xs-2 col-md-2"><div data-val="' + memory_array[i] + '" class="tile_div" id="tile_'+i+'" ><img src="../img/qmark3.png" data-val="?" align="center"  class="img-responsive"  /></div></div>';
+}
+else
+{
+		output += '<div class="col-xs-4 col-md-4"><div data-val="' + memory_array[i] + '" class="tile_div" id="tile_'+i+'" ><img src="../img/qmark3.png" data-val="?" align="center"  class="img-responsive"  /></div></div>';
+}
+
+		}
+		output += '</div>';
+		i--;
+	}
+	$('#memory_board').html(output);
+}
+
+
+//$.fn.newBoard(1);
+
+ $(document).on("click",".tile_div",function(){
+
+tile = $(this);
+val = $(this).data("val");
+
+
+//til = $(this).html().trim();
+til = $(this).find("img").data("val");
+if((til == "" || til == "?") && memory_values.length < 2){
+
+//console.log("inside if");
+
+$("#myvoice").get(0).src = "../img/" + val + ".mp3";
+
+$(this).removeClass("bg1");
+		$(this).css("background",'#FFF');
+
+		$(this).html('<img src="../img/' + val + '.jpg" align="center"  class="img-responsive"  />');
+$("#myvoice").get(0).play();
+		if(memory_values.length == 0){
+			memory_values.push(val);
+
+			memory_tile_ids.push($(this).prop("id"));
+		} else if(memory_values.length == 1){
+			memory_values.push(val);
+			memory_tile_ids.push($(this).prop("id"));
+			if(memory_values[0] == memory_values[1]){
+				tiles_flipped += 2;
+				// Clear both arrays
+				memory_values = [];
+            	memory_tile_ids = [];
+				// Check to see if the whole board is cleared
+				if(tiles_flipped == memory_array.length){
+$("#myvoice").get(0).src = "../img/applause.mp3";
+$("#myvoice").get(0).play();
+$("#gamearea").css("backgroundColor","#333");
+$("#levelup").get(0).play();
+$("#openPop").css("display","flex");
+showInterAds();
+//$("#memory_board").html("");
+
+					//setTimeout(newBoard, 2000);
+
+					//newBoard();
+				}
+			} else {
+				function flip2Back(){
+				    // Flip the 2 tiles back over
+
+
+			//$("#"+memory_tile_ids[0]).css('background','url(qmark.png) no-repeat');
+
+				$("#"+memory_tile_ids[0]).html('<img src="../img/qmark3.png" data-val="?" align="center"  class="img-responsive"  />');
+
+
+				//$("#"+memory_tile_ids[1]).css('background','url(qmark.png) no-repeat');
+
+				$("#"+memory_tile_ids[1]).html('<img src="../img/qmark3.png" data-val="?" align="center"  class="img-responsive"  />');
+
+				    // Clear both arrays
+				    memory_values = [];
+            	    memory_tile_ids = [];
+				}
+				setTimeout(flip2Back, 700);
+			}
+		}
+	}
+
+});
+
+
+/* next levels and replay button operations */
+$("#nextnew").click(function(event){
+event.preventDefault();
+$("#openPop").css("display","none");
+stage++;
+$.fn.newBoard(stage);
+});
+
+	$("#goback").click(function(event){
+		event.preventDefault();
+		$("#levels").slideDown("slow");
+$("#gamearea").hide("slow");
+$("#openPop").css("display","none");
+
+	});
+
+$("#levelsicon").click(function(event){
+event.preventDefault();
+
+$("#openPop").css("display","none");
+$("#levels").slideDown("slow");
+$("#gamearea").hide("slow");
+});
+
+$("#replay").click(function(event){
+event.preventDefault();
+$("#openPop").css("display","none");
+$.fn.newBoard(stage);
+});
+
+$(window).resize(function() {
+  $("#dialog").dialog("option", "position", "center"); //places the dialog box at the center
+  $("#dialog").dialog({
+    width: $(window).width() > 600 ? 600 : 'auto', //resizes the dialog box as the window is resized
+ });
+});
+
+
+
+});
+</script>
+<script type="text/javascript" src="../cordova.js"></script>
+<script type="text/javascript" src="../js/admob_simple.js"></script>
+</body>
+</html>

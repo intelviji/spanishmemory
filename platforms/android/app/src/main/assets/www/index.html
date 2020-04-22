@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+          <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <title>Spanish Letters Memory Game</title>
+	 <style type="text/css">
+    body{
+		
+	 background:url(img/back1.png) no-repeat #c2d22b;
+      background-size:cover;
+	 
+    }
+    .cols{
+      padding:10px;
+    }
+	.logo{
+	border:5px solid brown;
+	border-radius:24px;
+	box-shadow: 10px 10px 5px #888888;
+	
+	
+	}
+	p{
+	color:white;
+	background:rgba(0,0,0,0.5);
+	font-weight:bolder;
+	}
+    </style>
+    </head>
+    <body>
+	<div class="app">
+      <div class="container-fuid">
+		<div class="row">
+		  <div class="col-xs-12 col-md-12">
+			<h1 align="center" class="outline" style="background-color:#1ac5e1;padding:10px;color:#0c5494;margin:0">
+				juego de memoria de cartas españolas
+			</h1>
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="col-xs-2 col-md-2 col-sm-2">
+		  </div>
+			<div class="col-xs-4 col-md-4 col-sm-4 cols" >
+			  <a href="data/uyir_easy.html"> <img src="img/uyir_icon.jpg"  class="img-responsive" /></a>
+			</div>
+			<div class="col-xs-4 col-md-4 col-sm-4 cols" >
+				<a href="data/uyir_easy2.html"> <img src="img/uyir_part2.jpg"  class="img-responsive" /></a>
+			</div>
+			<div class="col-xs-2 col-md-2 col-sm-2">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2 col-md-2 col-sm-2">
+			</div>
+			  <div class="col-xs-4 col-md-4 col-sm-4 cols" >
+				<a href="data/learn_mei.html"> <img src="img/learn_icon.jpg"  class="img-responsive" /></a>
+				<p>Aprender español</p>
+			  </div>
+			  <div class="col-xs-4 col-md-4 col-sm-4 cols" >
+				  <a href="data/find_missing.html"> <img src="img/missing_icon.jpg"  class="img-responsive" /></a>
+				  <p>encontrar carta que falta</p>
+			  </div>
+			  <div class="col-xs-2 col-md-2 col-sm-2">
+			  </div>
+		</div>
+   	  </div>
+	 
+	</div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+		
+    </body>
+</html>
